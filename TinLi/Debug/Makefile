@@ -37,7 +37,10 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.cpp
+../adc.c \
+../pwm.c \
+../main.cpp \
+../scheduler.c
 
 
 PREPROCESSING_SRCS += 
@@ -47,16 +50,28 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o
+adc.o \
+pwm.o \
+main.o \
+scheduler.o
 
 OBJS_AS_ARGS +=  \
-main.o
+adc.o \
+pwm.o \
+main.o \
+scheduler.o
 
 C_DEPS +=  \
-main.d
+adc.d \
+pwm.d \
+main.d \
+scheduler.d
 
 C_DEPS_AS_ARGS +=  \
-main.d
+adc.d \
+pwm.d \
+main.d \
+scheduler.d
 
 OUTPUT_FILE_PATH +=TinLi.elf
 
@@ -74,6 +89,19 @@ LINKER_SCRIPT_DEP+=
 # AVR32/GNU C Compiler
 
 
+
+
+
+
+
+
+
+./%.o: .././%.c
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 4.9.2
+	$(QUOTE)X:\Programme\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"X:\Programme\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.1.102\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny25 -B "X:\Programme\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.1.102\gcc\dev\attiny25" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
 
 ./%.o: .././%.cpp
 	@echo Building file: $<

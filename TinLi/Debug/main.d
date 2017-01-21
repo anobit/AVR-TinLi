@@ -10,7 +10,8 @@ main.d main.o: .././main.cpp \
  x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
- x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
+ x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
+ .././adc.h .././pwm.h .././scheduler.h
 
 x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -35,3 +36,9 @@ x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\
 x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 x:\programme\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
+
+.././adc.h:
+
+.././pwm.h:
+
+.././scheduler.h:
