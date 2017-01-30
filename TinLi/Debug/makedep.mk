@@ -4,9 +4,9 @@
 
 adc.c
 
-pwm.c
+main.c
 
-main.cpp
+pwm.c
 
 scheduler.c
 

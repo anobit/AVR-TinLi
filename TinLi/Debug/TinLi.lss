@@ -3,70 +3,375 @@ TinLi.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000032  00000000  00000000  00000054  2**1
+  0 .text         00000190  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  00000086  2**0
+  1 .data         00000002  00800060  00000190  00000224  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  00000086  2**0
+  2 .bss          00000007  00800062  00800062  00000226  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000226  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000000b8  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000258  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000020  00000000  00000000  000000f4  2**0
+  5 .debug_aranges 000000b8  00000000  00000000  00000294  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000049b  00000000  00000000  00000114  2**0
+  6 .debug_info   00000456  00000000  00000000  0000034c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000042c  00000000  00000000  000005af  2**0
+  7 .debug_abbrev 000002ea  00000000  00000000  000007a2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000012d  00000000  00000000  000009db  2**0
+  8 .debug_line   00000303  00000000  00000000  00000a8c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  00000b08  2**2
+  9 .debug_frame  00000110  00000000  00000000  00000d90  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000002bb  00000000  00000000  00000b2c  2**0
+ 10 .debug_str    00000212  00000000  00000000  00000ea0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000010  00000000  00000000  00000de7  2**0
+ 11 .debug_loc    00000062  00000000  00000000  000010b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000078  00000000  00000000  00001114  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0e c0       	rjmp	.+28     	; 0x1e <__ctors_end>
-   2:	13 c0       	rjmp	.+38     	; 0x2a <__bad_interrupt>
-   4:	12 c0       	rjmp	.+36     	; 0x2a <__bad_interrupt>
-   6:	11 c0       	rjmp	.+34     	; 0x2a <__bad_interrupt>
-   8:	10 c0       	rjmp	.+32     	; 0x2a <__bad_interrupt>
-   a:	0f c0       	rjmp	.+30     	; 0x2a <__bad_interrupt>
-   c:	0e c0       	rjmp	.+28     	; 0x2a <__bad_interrupt>
-   e:	0d c0       	rjmp	.+26     	; 0x2a <__bad_interrupt>
-  10:	0c c0       	rjmp	.+24     	; 0x2a <__bad_interrupt>
-  12:	0b c0       	rjmp	.+22     	; 0x2a <__bad_interrupt>
-  14:	0a c0       	rjmp	.+20     	; 0x2a <__bad_interrupt>
-  16:	09 c0       	rjmp	.+18     	; 0x2a <__bad_interrupt>
-  18:	08 c0       	rjmp	.+16     	; 0x2a <__bad_interrupt>
-  1a:	07 c0       	rjmp	.+14     	; 0x2a <__bad_interrupt>
-  1c:	06 c0       	rjmp	.+12     	; 0x2a <__bad_interrupt>
+   2:	26 c0       	rjmp	.+76     	; 0x50 <__bad_interrupt>
+   4:	25 c0       	rjmp	.+74     	; 0x50 <__bad_interrupt>
+   6:	a5 c0       	rjmp	.+330    	; 0x152 <__vector_3>
+   8:	23 c0       	rjmp	.+70     	; 0x50 <__bad_interrupt>
+   a:	22 c0       	rjmp	.+68     	; 0x50 <__bad_interrupt>
+   c:	21 c0       	rjmp	.+66     	; 0x50 <__bad_interrupt>
+   e:	20 c0       	rjmp	.+64     	; 0x50 <__bad_interrupt>
+  10:	1f c0       	rjmp	.+62     	; 0x50 <__bad_interrupt>
+  12:	1e c0       	rjmp	.+60     	; 0x50 <__bad_interrupt>
+  14:	1d c0       	rjmp	.+58     	; 0x50 <__bad_interrupt>
+  16:	1c c0       	rjmp	.+56     	; 0x50 <__bad_interrupt>
+  18:	1b c0       	rjmp	.+54     	; 0x50 <__bad_interrupt>
+  1a:	1a c0       	rjmp	.+52     	; 0x50 <__bad_interrupt>
+  1c:	19 c0       	rjmp	.+50     	; 0x50 <__bad_interrupt>
 
 0000001e <__ctors_end>:
   1e:	11 24       	eor	r1, r1
   20:	1f be       	out	0x3f, r1	; 63
   22:	cf ed       	ldi	r28, 0xDF	; 223
   24:	cd bf       	out	0x3d, r28	; 61
-  26:	02 d0       	rcall	.+4      	; 0x2c <main>
-  28:	02 c0       	rjmp	.+4      	; 0x2e <_exit>
 
-0000002a <__bad_interrupt>:
-  2a:	ea cf       	rjmp	.-44     	; 0x0 <__vectors>
+00000026 <__do_copy_data>:
+  26:	10 e0       	ldi	r17, 0x00	; 0
+  28:	a0 e6       	ldi	r26, 0x60	; 96
+  2a:	b0 e0       	ldi	r27, 0x00	; 0
+  2c:	e0 e9       	ldi	r30, 0x90	; 144
+  2e:	f1 e0       	ldi	r31, 0x01	; 1
+  30:	02 c0       	rjmp	.+4      	; 0x36 <__do_copy_data+0x10>
+  32:	05 90       	lpm	r0, Z+
+  34:	0d 92       	st	X+, r0
+  36:	a2 36       	cpi	r26, 0x62	; 98
+  38:	b1 07       	cpc	r27, r17
+  3a:	d9 f7       	brne	.-10     	; 0x32 <__do_copy_data+0xc>
 
-0000002c <main>:
- */ 
+0000003c <__do_clear_bss>:
+  3c:	20 e0       	ldi	r18, 0x00	; 0
+  3e:	a2 e6       	ldi	r26, 0x62	; 98
+  40:	b0 e0       	ldi	r27, 0x00	; 0
+  42:	01 c0       	rjmp	.+2      	; 0x46 <.do_clear_bss_start>
 
-#include <avr/io.h>
+00000044 <.do_clear_bss_loop>:
+  44:	1d 92       	st	X+, r1
 
+00000046 <.do_clear_bss_start>:
+  46:	a9 36       	cpi	r26, 0x69	; 105
+  48:	b2 07       	cpc	r27, r18
+  4a:	e1 f7       	brne	.-8      	; 0x44 <.do_clear_bss_loop>
+  4c:	4c d0       	rcall	.+152    	; 0xe6 <main>
+  4e:	9e c0       	rjmp	.+316    	; 0x18c <_exit>
+
+00000050 <__bad_interrupt>:
+  50:	d7 cf       	rjmp	.-82     	; 0x0 <__vectors>
+
+00000052 <ADC_init>:
+  52:	8f 70       	andi	r24, 0x0F	; 15
+  54:	80 62       	ori	r24, 0x20	; 32
+  56:	87 b9       	out	0x07, r24	; 7
+  58:	87 ee       	ldi	r24, 0xE7	; 231
+  5a:	86 b9       	out	0x06, r24	; 6
+  5c:	08 95       	ret
+
+0000005e <ADC_getValue>:
+  5e:	84 b1       	in	r24, 0x04	; 4
+  60:	95 b1       	in	r25, 0x05	; 5
+  62:	89 2f       	mov	r24, r25
+  64:	08 95       	ret
+
+00000066 <init>:
+unsigned int outPwm = 0;
+unsigned int ADCChannel = 3;
+
+void init(){
+	//Alles auf eingang, bis auf PWM
+	DDRB = (1<<1);
+  66:	82 e0       	ldi	r24, 0x02	; 2
+  68:	87 bb       	out	0x17, r24	; 23
+	//Alles aus.
+	PORTB = 0;
+  6a:	18 ba       	out	0x18, r1	; 24
+	
+	Scheduler_init();
+  6c:	67 d0       	rcall	.+206    	; 0x13c <Scheduler_init>
+	PWM_init();
+  6e:	5b d0       	rcall	.+182    	; 0x126 <PWM_init>
+	
+	//Init ADC - Start with Current limitation
+	ADC_init(ADCChannel);
+  70:	80 91 60 00 	lds	r24, 0x0060
+  74:	90 91 61 00 	lds	r25, 0x0061
+  78:	ec df       	rcall	.-40     	; 0x52 <ADC_init>
+	
+	//Enable interrupts
+	sei();
+  7a:	78 94       	sei
+  7c:	08 95       	ret
+
+0000007e <cycle_100ms>:
+}
+
+
+
+void cycle_100ms(){
+	switch(ADCChannel){
+  7e:	80 91 60 00 	lds	r24, 0x0060
+  82:	90 91 61 00 	lds	r25, 0x0061
+  86:	82 30       	cpi	r24, 0x02	; 2
+  88:	91 05       	cpc	r25, r1
+  8a:	19 f0       	breq	.+6      	; 0x92 <cycle_100ms+0x14>
+  8c:	03 97       	sbiw	r24, 0x03	; 3
+  8e:	d1 f0       	breq	.+52     	; 0xc4 <cycle_100ms+0x46>
+  90:	26 c0       	rjmp	.+76     	; 0xde <cycle_100ms+0x60>
+	
+		case 2:
+			//ADC Input. 
+			outPwm = ADC_getValue();
+  92:	e5 df       	rcall	.-54     	; 0x5e <ADC_getValue>
+  94:	90 e0       	ldi	r25, 0x00	; 0
+  96:	90 93 63 00 	sts	0x0063, r25
+  9a:	80 93 62 00 	sts	0x0062, r24
+			if(outPwm > currMaxPwm)
+  9e:	20 91 64 00 	lds	r18, 0x0064
+  a2:	30 91 65 00 	lds	r19, 0x0065
+  a6:	28 17       	cp	r18, r24
+  a8:	39 07       	cpc	r19, r25
+  aa:	20 f4       	brcc	.+8      	; 0xb4 <cycle_100ms+0x36>
+				outPwm = currMaxPwm;
+  ac:	30 93 63 00 	sts	0x0063, r19
+  b0:	20 93 62 00 	sts	0x0062, r18
+				
+			ADCChannel = 3;
+  b4:	83 e0       	ldi	r24, 0x03	; 3
+  b6:	90 e0       	ldi	r25, 0x00	; 0
+  b8:	90 93 61 00 	sts	0x0061, r25
+  bc:	80 93 60 00 	sts	0x0060, r24
+			ADC_init(ADCChannel);
+  c0:	c8 df       	rcall	.-112    	; 0x52 <ADC_init>
+		break;
+  c2:	0d c0       	rjmp	.+26     	; 0xde <cycle_100ms+0x60>
+		case 3:
+			//Max current input.
+			currMaxPwm = ADC_getValue();
+  c4:	cc df       	rcall	.-104    	; 0x5e <ADC_getValue>
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	90 93 65 00 	sts	0x0065, r25
+  cc:	80 93 64 00 	sts	0x0064, r24
+			
+			ADCChannel = 2;
+  d0:	82 e0       	ldi	r24, 0x02	; 2
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+  d4:	90 93 61 00 	sts	0x0061, r25
+  d8:	80 93 60 00 	sts	0x0060, r24
+			ADC_init(ADCChannel);
+  dc:	ba df       	rcall	.-140    	; 0x52 <ADC_init>
+		
+		default:
+			//wut?
+		break;
+	}	
+	PWM_set(outPwm);
+  de:	80 91 62 00 	lds	r24, 0x0062
+  e2:	0f d0       	rcall	.+30     	; 0x102 <PWM_set>
+  e4:	08 95       	ret
+
+000000e6 <main>:
+	
+}
 
 int main(void)
-  2c:	ff cf       	rjmp	.-2      	; 0x2c <main>
+{
+	init();
+  e6:	bf df       	rcall	.-130    	; 0x66 <init>
+	//255 and 0 work. -> pwm is not correctly initialized
+	//PWM_set(100);
+	
+	while (1)
+	{
+		if(ISR_10MS){
+  e8:	80 91 68 00 	lds	r24, 0x0068
+  ec:	81 11       	cpse	r24, r1
+			ISR_10MS = 0;
+  ee:	10 92 68 00 	sts	0x0068, r1
+			cycle_10ms();
+		}
+		
+		if(ISR_100MS){
+  f2:	80 91 67 00 	lds	r24, 0x0067
+  f6:	88 23       	and	r24, r24
+  f8:	b9 f3       	breq	.-18     	; 0xe8 <main+0x2>
+			ISR_100MS = 0;
+  fa:	10 92 67 00 	sts	0x0067, r1
+			cycle_100ms();
+  fe:	bf df       	rcall	.-130    	; 0x7e <cycle_100ms>
+ 100:	f3 cf       	rjmp	.-26     	; 0xe8 <main+0x2>
 
-0000002e <_exit>:
-  2e:	f8 94       	cli
+00000102 <PWM_set>:
 
-00000030 <__stop_program>:
-  30:	ff cf       	rjmp	.-2      	; 0x30 <__stop_program>
+//Value from 0..255, 255 = 100% Duty Cycle
+void PWM_set(uint8_t value)
+{
+	
+	if(value == 0 || value >= 255)
+ 102:	9f ef       	ldi	r25, 0xFF	; 255
+ 104:	98 0f       	add	r25, r24
+ 106:	9e 3f       	cpi	r25, 0xFE	; 254
+ 108:	48 f0       	brcs	.+18     	; 0x11c <PWM_set+0x1a>
+	{
+		//PWM aus
+		TCCR0A &= ~(1<<COM0B1);
+ 10a:	9a b5       	in	r25, 0x2a	; 42
+ 10c:	9f 7d       	andi	r25, 0xDF	; 223
+ 10e:	9a bd       	out	0x2a, r25	; 42
+		//Pin entsprechend beschalten.
+		if(value == 255)
+ 110:	8f 3f       	cpi	r24, 0xFF	; 255
+ 112:	11 f4       	brne	.+4      	; 0x118 <PWM_set+0x16>
+			PORTB |= (1<<1); //Dauer-an
+ 114:	c1 9a       	sbi	0x18, 1	; 24
+ 116:	05 c0       	rjmp	.+10     	; 0x122 <PWM_set+0x20>
+		else
+			PORTB &= ~(1<<1);//Dauer-aus
+ 118:	c1 98       	cbi	0x18, 1	; 24
+ 11a:	03 c0       	rjmp	.+6      	; 0x122 <PWM_set+0x20>
+
+	}
+	else
+	{
+		//PWM an
+		TCCR0A |= (1<<COM0B1);
+ 11c:	9a b5       	in	r25, 0x2a	; 42
+ 11e:	90 62       	ori	r25, 0x20	; 32
+ 120:	9a bd       	out	0x2a, r25	; 42
+	}
+
+	OCR0B = value;
+ 122:	88 bd       	out	0x28, r24	; 40
+ 124:	08 95       	ret
+
+00000126 <PWM_init>:
+//Init OC0B with FastPWM, 8 bit.
+void PWM_init(void)
+{
+	
+	//IO Pin
+	DDRB|= 1<<1;
+ 126:	b9 9a       	sbi	0x17, 1	; 23
+	PORTB &= ~(1<<1);
+ 128:	c1 98       	cbi	0x18, 1	; 24
+	
+	// Timer 0
+	//TCCR0B |= (1<<WGM02); 	// FastPWM, 8-Bit, 0xff as top
+	TCCR0B |= (1<<CS01);	// Prescaler 64 -> 61Hz
+ 12a:	83 b7       	in	r24, 0x33	; 51
+ 12c:	82 60       	ori	r24, 0x02	; 2
+ 12e:	83 bf       	out	0x33, r24	; 51
+	
+	TCCR0A |= (1<<COM0B1) | (1<<WGM01) | (1<<WGM00); 
+ 130:	8a b5       	in	r24, 0x2a	; 42
+ 132:	83 62       	ori	r24, 0x23	; 35
+ 134:	8a bd       	out	0x2a, r24	; 42
+	
+
+	
+	PWM_set(0);
+ 136:	80 e0       	ldi	r24, 0x00	; 0
+ 138:	e4 df       	rcall	.-56     	; 0x102 <PWM_set>
+ 13a:	08 95       	ret
+
+0000013c <Scheduler_init>:
+volatile uint8_t ISR_100MS = 0;
+
+void Scheduler_init(void){
+	
+	// Timer 1 konfigurieren
+	TCCR1 |= (1<<CTC1); 				// CTC-Modus
+ 13c:	80 b7       	in	r24, 0x30	; 48
+ 13e:	80 68       	ori	r24, 0x80	; 128
+ 140:	80 bf       	out	0x30, r24	; 48
+	TCCR1 |= (1<<CS12) | (1<<CS11) | (1<<CS10);	// Prescaler 64 CHECK!
+ 142:	80 b7       	in	r24, 0x30	; 48
+ 144:	87 60       	ori	r24, 0x07	; 7
+ 146:	80 bf       	out	0x30, r24	; 48
+
+	//CTC's einstellen
+	OCR1A = 156;			//10ms
+ 148:	8c e9       	ldi	r24, 0x9C	; 156
+ 14a:	8e bd       	out	0x2e, r24	; 46
+	
+	//Interrupts aktivieren
+	TIMSK = (1<<OCIE1A);	//OCR1A CTC-Interrupt aktivieren.
+ 14c:	80 e4       	ldi	r24, 0x40	; 64
+ 14e:	89 bf       	out	0x39, r24	; 57
+ 150:	08 95       	ret
+
+00000152 <__vector_3>:
+	
+}
+
+//10ms Interrupt. Just set the flags!
+//We don't want to get interrupts stacked.
+ISR (TIMER1_COMPA_vect){
+ 152:	1f 92       	push	r1
+ 154:	0f 92       	push	r0
+ 156:	0f b6       	in	r0, 0x3f	; 63
+ 158:	0f 92       	push	r0
+ 15a:	11 24       	eor	r1, r1
+ 15c:	8f 93       	push	r24
+	volatile static uint8_t cnt=0;
+	cnt++;
+ 15e:	80 91 66 00 	lds	r24, 0x0066
+ 162:	8f 5f       	subi	r24, 0xFF	; 255
+ 164:	80 93 66 00 	sts	0x0066, r24
+	
+	//I know this is set a bit shorter than 10ms.. But we don't need high precision..
+	ISR_10MS = 1;
+ 168:	81 e0       	ldi	r24, 0x01	; 1
+ 16a:	80 93 68 00 	sts	0x0068, r24
+		
+	if(cnt>=10){
+ 16e:	80 91 66 00 	lds	r24, 0x0066
+ 172:	8a 30       	cpi	r24, 0x0A	; 10
+ 174:	28 f0       	brcs	.+10     	; 0x180 <__vector_3+0x2e>
+		ISR_100MS = 1;
+ 176:	81 e0       	ldi	r24, 0x01	; 1
+ 178:	80 93 67 00 	sts	0x0067, r24
+		cnt = 0;
+ 17c:	10 92 66 00 	sts	0x0066, r1
+		//PORTB ^= (1<<1);
+	}
+}
+ 180:	8f 91       	pop	r24
+ 182:	0f 90       	pop	r0
+ 184:	0f be       	out	0x3f, r0	; 63
+ 186:	0f 90       	pop	r0
+ 188:	1f 90       	pop	r1
+ 18a:	18 95       	reti
+
+0000018c <_exit>:
+ 18c:	f8 94       	cli
+
+0000018e <__stop_program>:
+ 18e:	ff cf       	rjmp	.-2      	; 0x18e <__stop_program>

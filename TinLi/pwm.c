@@ -16,10 +16,12 @@ void PWM_init(void)
 	PORTB &= ~(1<<1);
 	
 	// Timer 0
-	TCCR0B |= (1<<WGM02); 	// FastPWM, 8-Bit, OCRA as top
+	//TCCR0B |= (1<<WGM02); 	// FastPWM, 8-Bit, 0xff as top
 	TCCR0B |= (1<<CS01);	// Prescaler 64 -> 61Hz
 	
 	TCCR0A |= (1<<COM0B1) | (1<<WGM01) | (1<<WGM00); 
+	
+
 	
 	PWM_set(0);
 }

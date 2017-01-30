@@ -11,9 +11,9 @@
 
 #include <avr/io.h>
 
-void initADC(void);
+void ADC_init(unsigned int channel);
 
-uint8_t getADC();
+uint8_t ADC_getValue();
 
 
 #endif /* ADC_H_ */
